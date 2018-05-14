@@ -1,0 +1,39 @@
+<% require 'open-uri'
+require 'json'
+%>
+
+<h1>Your results are..</h1>
+<h3>The longest word you found was <span class="result"><%= @word %></span></h2>
+<% url = "https://wagon-dictionary.herokuapp.com/#{@word}"
+  @total = 0
+  @letters = params['grid'].split('')
+  word_serialized = open(url).read
+  word = JSON.parse(word_serialized)
+  if word["found"] == true
+    word_a = word["word"].downcase.split("")
+    word_a.each do |letter|
+      if @letters.include?(letter)
+        @score = word["length"] * 20
+      else
+        @message = "not in the grid"
+        @score = 0
+      end
+      @message == nil ? @message = "Nice work... but you can do better! Play again" : @message
+    end
+  else
+    @message = "not an english word"
+    @score = 0
+  end
+  @total += @score
+%>
+<div class="score">
+  <h2>Score: <%=@score %></h2>
+</div>
+<div class ="message">
+<h2><%=@message%></h2>
+</div>
+<div class="total">
+  <h2>Your total score is <%= @total %></h2>
+</div>
+<%= link_to 'New game', new_path %>
+

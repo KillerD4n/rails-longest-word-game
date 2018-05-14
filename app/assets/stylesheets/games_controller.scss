@@ -1,0 +1,32 @@
+// Place all the styles related to the GamesController controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.list-inline {
+  display: inline;
+  padding: 15px;
+  margin: 10px;
+  color:white;
+  font-size:32px;
+  border-style:solid;
+  border-color:grey;
+  background-color:#189ad3;
+}
+div {
+  padding-top:10px;
+}
+.result {
+  color: blue;
+}
+
+.score{
+  background-color:lightyellow;
+}
+.message {
+  color:blue;
+}
+.banner {
+  background-image: url('../images/countdown.png');
+}
+.container{
+  text-align: center;
+}
